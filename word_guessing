@@ -1,0 +1,44 @@
+import random
+
+words = "cat,dog,donkey ".split(",")
+word_list = words
+print(word_list)
+
+choosen_word = random.choice(word_list)
+print(choosen_word)
+display = []
+lives = 5
+
+for i in range(len(choosen_word)):
+    display += "_"
+
+print(display)
+
+play =  True
+
+while play:
+    choice = input("Guess the letter\n")
+    if choice == "":
+        print("Please guess a letter ")
+
+    elif len(choice) >1:
+        print("Guess single letter at a time")
+
+    else:
+        if choice in choosen_word:
+            for pos , letter in enumerate (choosen_word):
+                if choice == choosen_word[pos]:
+                    display[pos] = letter
+                    print(display)
+        else:
+            lives -= 1
+            print(f"Wrong Answer {lives}")
+
+
+        if "_" not in display:
+            print("you won Great")
+
+        elif lives == 0:
+            print("You Loose")
+
+
